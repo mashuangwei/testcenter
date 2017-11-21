@@ -1,0 +1,76 @@
+spring:
+  http:
+    multipart:
+      max-file-size: 50Mb
+      maxRequestSize: 50Mb
+  datasource:
+    url: jdbc:mysql://localhost:3366/easy?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,log4j
+    logSlowSql: true
+  jackson:
+      default-property-inclusion: non_null
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  thymeleaf:
+    cache: false
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 20000
+#    cluster:
+#        nodes: 192.168.211.134:7000,192.168.211.134:7001,192.168.211.134:7002
+#        maxRedirects: 6
+    pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1
+  mail:
+    host: smtp.163.com
+    username: msw301@163.com
+    password: mxw19871021
+    default-encoding: utf-8
+
+pagehelper:
+  auto-dialect: true
+  close-conn: true
+  reasonable: true
+  page-size-zero: true
+  params: count=countSql
+
+
+mybatis:
+  type-aliases-package: com.easy.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#  not-empty: false
+#  identity: MYSQL
+
+server:
+  port: 8000
+  connection-timeout: 1800000
+logging:
+  level:
+    com.easy.mapper: debug
+
+
+
