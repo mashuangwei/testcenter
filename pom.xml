@@ -11,11 +11,12 @@
     <name>testcenter</name>
     <description>Demo project for Spring Boot</description>
 
+    <!--继承信息 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.5.4.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -251,12 +252,52 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>20.0</version>
+        </dependency>
+
+        <!--通用mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>1.1.5</version>
+        </dependency>
+
     </dependencies>
+
+    <!--&lt;!&ndash;指定远程仓库（含插件）&ndash;&gt;-->
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>spring-snapshots</id>-->
+            <!--<url>http://repo.spring.io/snapshot</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+        <!--<repository>-->
+            <!--<id>spring-milestones</id>-->
+            <!--<url>http://repo.spring.io/milestone</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>spring-snapshots</id>-->
+            <!--<url>http://repo.spring.io/snapshot</url>-->
+        <!--</pluginRepository>-->
+        <!--<pluginRepository>-->
+            <!--<id>spring-milestones</id>-->
+            <!--<url>http://repo.spring.io/milestone</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
 
     <build>
         <extensions>

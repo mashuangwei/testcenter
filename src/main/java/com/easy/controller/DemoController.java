@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -29,6 +32,17 @@ public class DemoController {
 
     @Autowired
     private UserService userService;
+
+
+    @GetMapping("/selectById")
+    public User selectById(Long id) {
+        return userService.selectById(id);
+    }
+
+    @PutMapping("/updateById")
+    public int updateById(User user) {
+        return userService.updateById(user);
+    }
 
     @GetMapping("/query")
     public void test() {
@@ -50,5 +64,34 @@ public class DemoController {
         Page<User> users = userService.findByPage(1, 3);
         PageInfo<User> userPageInfo = new PageInfo<>(users);
         return userPageInfo;
+    }
+
+    /**
+     * 随机抛出异常.
+     */
+    private void randomException() throws Exception {
+        Exception[] exceptions = { //异常集合
+                new NullPointerException(),
+                new ArrayIndexOutOfBoundsException(),
+                new NumberFormatException(),
+                new SQLException()};
+        //发生概率
+        double probability = 0.75;
+        if (Math.random() < probability) {
+            //情况1：要么抛出异常
+            throw exceptions[(int) (Math.random() * exceptions.length)];
+        } else {
+            //情况2：要么继续运行
+        }
+
+    }
+
+    /**
+     * 模拟用户数据访问.
+     */
+    @GetMapping("/exception")
+    public List index() throws Exception {
+        randomException();
+        return Arrays.asList("正常用户数据1!", "正常用户数据2! 请按F5刷新!!");
     }
 }

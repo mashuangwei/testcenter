@@ -3,7 +3,6 @@ package com.easy.mapper;
 import com.easy.entity.User;
 import com.github.pagehelper.Page;
 
-import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
